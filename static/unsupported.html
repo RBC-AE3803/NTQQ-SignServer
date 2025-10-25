@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>版本不受支持 - NTQQ Linux Sign API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('https://api.ae3803.top/cells-at-work');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .error-message {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            color: white;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .supported-versions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            color: white;
+            text-align: left;
+        }
+
+        .supported-versions h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .version-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .version-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: underline;
+            margin-top: 15px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-container">
+        <div class="logo">⚠️</div>
+        <h1>版本不受支持</h1>
+        <div class="error-message" id="errorMessage">
+            您请求的版本 <strong id="requestedVersion"></strong> 不受支持。
+        </div>
+        <a href="/" class="back-link">返回首页</a>
+        <div class="footer">
+            NTQQ Linux Sign Server v1.1.4 | Powered by Rust
+        </div>
+    </div>
+
+    <script>
+        const pathParts = window.location.pathname.split('/');
+        const version = pathParts[pathParts.length - 1];
+        
+        if (version && version !== 'sign') {
+            document.getElementById('requestedVersion').textContent = version;
+        }
+    </script>
+</body>
+</html>

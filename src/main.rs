@@ -216,6 +216,17 @@ async fn sign_api_get(path: web::types::Path<String>) -> impl web::Responder {
     let version = path.into_inner();
     println!("[INFO] GET /api/sign/{}", version);
     
+    // 检查版本是否受支持
+    if get_full_version(&version).is_none() {
+        println!("[WARN] Unsupported version requested via GET: {}", version);
+        match fs::read_to_string("static/unsupported.html") {
+            Ok(content) => return web::HttpResponse::Ok()
+                .content_type("text/html; charset=utf-8")
+                .body(content),
+            Err(_) => return web::HttpResponse::NotFound().body("Unsupported version page not found"),
+        }
+    }
+    
     match fs::read_to_string("static/sign.html") {
         Ok(content) => web::HttpResponse::Ok()
             .content_type("text/html; charset=utf-8")
