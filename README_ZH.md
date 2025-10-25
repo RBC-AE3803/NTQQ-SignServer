@@ -17,10 +17,10 @@ gcc -std=c99 -shared -fPIC -o libsymbols.so symbols.c
 cargo build --release
 ```
 
-将 `libsymbols.so` 和 `target/release/sign` 文件 和 `static` 文件夹 放到包含 `wrapper.node` 文件的文件夹(通常是/opt/QQ/resources/app)中。
+将 `libsymbols.so` 和 `target/release/sign` 文件放到包含 `wrapper.node` 文件的文件夹(通常是/opt/QQ/resources/app)中。
 
 切换目录到包含 `wrapper.node` 的文件夹，然后运行 `./sign`。
 
 服务器将监听 `0.0.0.0:11478`。如果您想监听其他端口，请修改 `src/main.rs` 文件。
-您可以使用/api/sign/版本（比如39038）来请求签名服务器
+
 尽情使用吧！

@@ -17,10 +17,10 @@ gcc -std=c99 -shared -fPIC -o libsymbols.so symbols.c
 cargo build --release
 ```
 
-Place the `libsymbols.so` and `target/release/sign` files and `static` folder into the folder that contains the `wrapper.node` file (usually `/opt/QQ/resources/app`).
+Place the `libsymbols.so` and `target/release/sign` files into the folder that contains the `wrapper.node` file (usually `/opt/QQ/resources/app`).
 
 Switch the directory to the folder containing `wrapper.node`, and then run `./sign`.
 
 The server will listen on `0.0.0.0:11478`. If you want to listen on other ports, please modify the `src/main.rs` file.
-You can use /api/sign/version (for example, 39038) to request the signing server.
+
 Enjoy!
